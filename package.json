@@ -1,0 +1,19 @@
+{
+  "name": "survey",
+  "version": "1.0.0",
+  "description": "An survey application created using TDD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisCarlosb3/survey.git"
+  },
+  "author": "Luis Carlos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisCarlosb3/survey/issues"
+  },
+  "homepage": "https://github.com/LuisCarlosb3/survey#readme"
+}
