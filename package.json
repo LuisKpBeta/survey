@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/LuisCarlosb3/survey/issues"
   },
-  "homepage": "https://github.com/LuisCarlosb3/survey#readme"
+  "homepage": "https://github.com/LuisCarlosb3/survey#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^2.4.2"
+  }
 }
