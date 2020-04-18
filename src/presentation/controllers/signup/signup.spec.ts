@@ -14,7 +14,7 @@ const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {
     add (account: AddAccountModel): AccountModel {
       const fakeAccount = {
-        id: 'valid_d',
+        id: 'valid_id',
         name: 'valid_name',
         email: 'valid_email@email.com',
         password: 'valid_password'
@@ -159,6 +159,23 @@ describe('SignUp Controller', () => {
     expect(httpResponse.statusCode).toBe(500)
     expect(httpResponse.body).toEqual(new ServerError())
   })
+  test('Should return 500 if AddAccount throws', () => {
+    const { sut, addAccountStub } = makeSut()
+    jest.spyOn(addAccountStub, 'add').mockImplementationOnce(() => {
+      throw new Error()
+    })
+    const httpRequest = {
+      body: {
+        name: 'any_name',
+        email: 'any_email@email.com',
+        password: 'password',
+        passwordConfirmation: 'password'
+      }
+    }
+    const httpResponse = sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(500)
+    expect(httpResponse.body).toEqual(new ServerError())
+  })
   test('Should call addAcount with correct values', () => {
     // system under test
     const { sut, addAccountStub } = makeSut()
@@ -178,21 +195,23 @@ describe('SignUp Controller', () => {
       password: 'password'
     })
   })
-  test('Should return 500 if AddAccount throws', () => {
-    const { sut, addAccountStub } = makeSut()
-    jest.spyOn(addAccountStub, 'add').mockImplementationOnce(() => {
-      throw new Error()
-    })
+  test('Should return 400 if no email is provided', () => {
+    const { sut } = makeSut()
     const httpRequest = {
       body: {
-        name: 'any_name',
-        email: 'any_email@email.com',
-        password: 'password',
-        passwordConfirmation: 'password'
+        name: 'valid_name',
+        email: 'valid_email@email.com',
+        password: 'valid_password',
+        passwordConfirmation: 'valid_password'
       }
     }
     const httpResponse = sut.handle(httpRequest)
-    expect(httpResponse.statusCode).toBe(500)
-    expect(httpResponse.body).toEqual(new ServerError())
+    expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.body).toEqual({
+      id: 'valid_id',
+      name: 'valid_name',
+      email: 'valid_email@email.com',
+      password: 'valid_password'
+    })
   })
 })
