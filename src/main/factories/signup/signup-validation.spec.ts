@@ -1,9 +1,6 @@
 import { makeSignUpValidation } from './signup-validation'
-import { ValidationComposite } from '../../../presentation/helpers/validators/validation-composite'
-import { RequiredFieldValidation } from '../../../presentation/helpers/validators/required-field-validation'
+import { ValidationComposite, RequiredFieldValidation, CompareFieldValidation, EmailValidation } from '../../../presentation/helpers/validators'
 import { Validation } from '../../../presentation/protocols/validation'
-import { CompareFieldValidation } from '../../../presentation/helpers/validators/compare-field-validation'
-import { EmailValidation } from '../../../presentation/helpers/validators/email-validation'
 import { EmailValidator } from '../../../presentation/protocols/email-validator'
 const makeEmailValidator = (): EmailValidator => {
   class EmailValidatorStub implements EmailValidator {
