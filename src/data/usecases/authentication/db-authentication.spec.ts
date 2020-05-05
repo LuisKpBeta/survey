@@ -32,7 +32,7 @@ const makeHashCompareStub = (): HashComparer => {
 }
 const makeTokenGenerator = (): TokenGenerator => {
   class TokenGeneratorStub implements TokenGenerator {
-    async generate (id: string): Promise<String> {
+    async generate (id: string): Promise<string> {
       return await new Promise(resolve => resolve('any_token'))
     }
   }
