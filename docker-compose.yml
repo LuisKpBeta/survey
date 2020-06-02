@@ -1,0 +1,21 @@
+version "3"
+services:
+  mongo:
+    image: mongo:3
+    restart: always
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+  api:
+    container_name: api_container
+    build: .
+    restart: always
+    image: survey-api
+    command: npm start
+    volumes:
+      - ./dist:/usr/src/survey/dist
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
