@@ -8,6 +8,8 @@ services:
       - ./data:/data/db
     ports:
       - "27017:27017"
+    networks:
+      - mongo-api
   api:
     container_name: api_container
     build: .
@@ -20,3 +22,8 @@ services:
       - "3000:3000"
     links:
       - mongo
+    networks:
+      - mongo-api
+  networks:
+    mongo-api:
+      driver: bridge
