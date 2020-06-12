@@ -15,7 +15,7 @@ describe('Login Routes', () => {
     await MongoHelper.disconnect()
   })
   describe('POST /surveys', () => {
-    test('Should return 200 on signup', async () => {
+    test('Should return 403 on add survey success without access token', async () => {
       await request(app)
         .post('/surveys')
         .send({
@@ -25,7 +25,7 @@ describe('Login Routes', () => {
             { answer: 'other_answer' }
           ]
         })
-        .expect(204)
+        .expect(403)
     })
   })
 })
