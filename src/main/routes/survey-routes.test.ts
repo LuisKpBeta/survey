@@ -54,5 +54,26 @@ describe('Login Routes', () => {
         })
         .expect(204)
     })
+    test('Should return 403 on add survey success with invalid role', async () => {
+      const res = await accountCollection.insertOne({
+        name: 'luis carlos',
+        email: 'email@gmail.com',
+        password: '123'
+      })
+      const id = res.ops[0]._id
+      const accessToken = sign({ id }, env.jwtSecret)
+      await accountCollection.updateOne({ _id: id }, { $set: { accessToken } })
+      await request(app)
+        .post('/surveys')
+        .set('x-access-token', accessToken)
+        .send({
+          question: 'any_question',
+          answers: [
+            { image: 'http://image-name.com', answer: 'any_answer' },
+            { answer: 'other_answer' }
+          ]
+        })
+        .expect(403)
+    })
   })
 })
