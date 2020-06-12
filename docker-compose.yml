@@ -10,6 +10,7 @@ services:
       - ./dist:/usr/src/survey/dist
     ports:
       - "3000:3000"
+      - "9222:9222"
     links:
       - mongo
   mongo:
