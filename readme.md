@@ -11,6 +11,6 @@ A organização do código segue os principios SOLID, DRY, YAGNI, KISS, Small Co
 - [x] Cadastro
 - [x] Login
 - [x] Criar enquete
-- [ ] Listar enquetes
+- [x] Listar enquetes
 - [ ] Responder enquete
 - [ ] Resultado da enquete
