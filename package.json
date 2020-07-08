@@ -1,6 +1,6 @@
 {
   "name": "survey",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "An survey application created using TDD",
   "main": "index.js",
   "scripts": {
