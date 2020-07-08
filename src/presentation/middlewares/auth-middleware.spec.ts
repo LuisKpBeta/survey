@@ -13,7 +13,7 @@ const makeHttpRequest = (): HttpRequest => ({
     'x-access-token': 'any-token'
   }
 })
-interface SutTypes {
+type SutTypes = {
   sut: AuthMiddleware
   loadAccountByTokenStub: LoadAccountByToken
 }
