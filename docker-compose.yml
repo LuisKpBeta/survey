@@ -5,7 +5,10 @@ services:
     build: .
     restart: always
     image: survey-api
-    command: npm start
+    command: bash -c "npm install --only=prod && npm run debug"
+    restart: always
+    environment: 
+      - MONGO_URL=mongodb://mongo:27017/clean-node-api
     volumes:
       - ./dist:/usr/src/survey/dist
     ports:
