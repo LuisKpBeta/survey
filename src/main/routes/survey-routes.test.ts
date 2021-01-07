@@ -18,7 +18,7 @@ const makeAccessToken = async (role: string): Promise<string> => {
   await accountCollection.updateOne({ _id: id }, { $set: { accessToken } })
   return accessToken
 }
-describe('Survey Routes', () => {
+describe('Login Routes', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
   })
