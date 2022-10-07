@@ -61,7 +61,7 @@
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
     "mongodb": "^3.5.8",
-    "validator": "^13.0.0"
+    "validator": "^13.7.0"
   },
   "engines": {
     "node": "12.x"
